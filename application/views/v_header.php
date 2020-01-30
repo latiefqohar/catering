@@ -69,10 +69,10 @@
             <!-- end itung -->
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="<?= base_url('Home'); ?>" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="<?= base_url('Home'); ?>" class="nav-link">Beranda</a></li>
 					<li class="nav-item"><a href="<?= base_url('Belanja'); ?>" class="nav-link">Pesan</a></li>
 					<li class="nav-item"><a href="<?= base_url('Status'); ?>" class="nav-link">Cek Status</a></li>
-					<li class="nav-item active"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item active"><a href="<?= base_url('About'); ?>" class="nav-link">Tentang</a></li>
 					<!-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Shop</a>
@@ -85,7 +85,7 @@
 						</div>
 					</li> -->
 					<!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
-					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+					<!-- <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
 					<li class="nav-item cta cta-colored"><a href="<?= base_url('Keranjang'); ?>" class="nav-link"><span
 								class="icon-shopping_cart"></span>[<?= $data['total']; ?>]</a></li>
 

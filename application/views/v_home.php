@@ -1,6 +1,6 @@
 <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
-	      <div class="slider-item" style="background-image: url(<?= base_url('assets/template/'); ?>images/bg_1.jpg);">
+	      <div class="slider-item" style="background-image: url(<?= base_url('assets/template/'); ?>images/makanan.jpg);">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -15,7 +15,7 @@
 	        </div>
 	      </div>
 
-	      <div class="slider-item" style="background-image: url(<?= base_url('assets/template/'); ?>images/bg_2.jpg);">
+	      <div class="slider-item" style="background-image: url(<?= base_url('assets/template/'); ?>images/gurame.jpeg);">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -89,7 +89,7 @@
 					<div class="col-md-8">
 						<div class="row">
 							<div class="col-md-6 order-md-last align-items-stretch d-flex">
-								<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(<?= base_url('assets/template/'); ?>images/category.jpg);">
+								<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(<?= base_url('assets/template/'); ?>images/makanan.jpg);" >
 									<div class="text text-center">
 										<h2>Menu Terbaik</h2>
 										<p>Nikmati menu terbaik kami</p>
@@ -98,12 +98,12 @@
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(<?= base_url('assets/template/'); ?>images/category-1.jpg);">
+								<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(<?= base_url('assets/template/'); ?>images/ayam-geprek.jpg);">
 									<div class="text px-3 py-1">
 										<h2 class="mb-0"><a href="#">Ayam Geprek</a></h2>
 									</div>
 								</div>
-								<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(<?= base_url('assets/template/'); ?>images/category-2.jpg);">
+								<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(<?= base_url('assets/template/'); ?>images/rica-rica.jpg);">
 									<div class="text px-3 py-1">
 										<h2 class="mb-0"><a href="#">Ayam Rica-Rica</a></h2>
 									</div>
@@ -118,7 +118,7 @@
 								<h2 class="mb-0"><a href="#">Juices</a></h2>
 							</div>		
 						</div>
-						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(<?= base_url('assets/template/'); ?>images/category-4.jpg);">
+						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(<?= base_url('assets/template/'); ?>images/gurame.jpeg);">
 							<div class="text px-3 py-1">
 								<h2 class="mb-0"><a href="#">Gurame Bakar</a></h2>
 							</div>
@@ -139,64 +139,36 @@
         </div>   		
     	</div>
     	<div class="container">
-    		<div class="row">
+		<div class="row">
+                <?php foreach($menu as $row){?> 
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/template/'); ?>images/product-1.jpg" alt="Colorlib Template">
+    					<a href="#" class="img-prod"><img class="img-fluid" src="<?= base_url('uploads/').$row->foto; ?>" alt="Colorlib Template" style="height:200px">
     						<span class="status">30%</span>
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a href="#">Bell Pepper</a></h3>
+                            <h3><a href="#"><?= $row->nama; ?></a></h3>
+                            <p style="font-size:8pt"><?= $row->deskripsi; ?></p>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+		    						<p class="price"><span class="price">Rp. <?= number_format($row->harga,2); ?></span></p>
 		    					</div>
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    							<a href="<?= base_url('Belanja/tambah_keranjang/'.$row->id); ?>" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	    								<span><i class="ion-ios-cart"></i></span>
 	    							</a>
-	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-	    								<span><i class="ion-ios-heart"></i></span>
+	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    								<span><i class="ion-ios-menu"></i></span>
 	    							</a>
     							</div>
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/template/'); ?>images/product-2.jpg" alt="Colorlib Template">
-    						<div class="overlay"></div>
-    					</a>
-    					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a href="#">Strawberry</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-	    					</div>
-    						<div class="bottom-area d-flex px-3">
-	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-	    								<span><i class="ion-ios-cart"></i></span>
-	    							</a>
-	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-	    								<span><i class="ion-ios-heart"></i></span>
-	    							</a>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
+                </div>
+                <?php } ?>
     		</div>
     	</div>
     </section>
@@ -233,77 +205,51 @@
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel">
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(<?= base_url('assets/template/'); ?>images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Marketing Manager</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(<?= base_url('assets/template/'); ?>images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Interface Designer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(<?= base_url('assets/template/'); ?>images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">UI Designer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(<?= base_url('assets/template/'); ?>images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Web Developer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(<?= base_url('assets/template/'); ?>images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">System Analyst</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+			<div class="item">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-5"
+								style="background-image: url(<?php base_url(); ?>assets/template/images/person_1.jpg)">
+								<span class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text text-center">
+								<p class="mb-5 pl-4 line">Pelayanannya baik, makanannya enak dan support yg baik</p>
+								<p class="name">Garreth Smith</p>
+								<span class="position">GA Manager PT. ABC</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-5"
+								style="background-image: url(<?php base_url(); ?>assets/template/images/person_2.jpg)">
+								<span class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text text-center">
+								<p class="mb-5 pl-4 line">Makanannya lezat dan pesanannya cepat</p>
+								<p class="name">Garreth Smith</p>
+								<span class="position">Karyawan Swasta</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap p-4 pb-5">
+							<div class="user-img mb-5"
+								style="background-image: url(<?php base_url(); ?>assets/template/images/person_3.jpg)">
+								<span class="quote d-flex align-items-center justify-content-center">
+									<i class="icon-quote-left"></i>
+								</span>
+							</div>
+							<div class="text text-center">
+								<p class="mb-5 pl-4 line">Enak makanannya, Cepat prosesnya dan pengirimannya</p>
+								<p class="name">Garreth Smith</p>
+								<span class="position">Pegawai Swasta</span>
+							</div>
+						</div>
+					</div>
           </div>
         </div>
       </div>

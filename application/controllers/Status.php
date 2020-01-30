@@ -35,6 +35,8 @@ class Status extends CI_Controller {
             $this->load->view('v_footer');
         }else{
             $data['pesanan']=NULL ;
+            $data['status_pesanan']=null;
+            $data['status_pembayaran']=null;
             $this->load->view('v_header');
             $this->load->view('v_status',$data);
             $this->load->view('v_footer');
