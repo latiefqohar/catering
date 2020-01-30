@@ -12,41 +12,37 @@
 <section class="ftco-section">
 	<div class="container">
         <div class="row justify-content-center">
-            <h1>Kode Pesanan <b>123112</b></h1>
+            <h1>Kode Pesanan <b><?= $transaksi['id']; ?></b></h1>
         </div>
 		<div class="row justify-content-center">
-			<div class="col-xl-5">
+			<div class="col-xl-4">
 				<div class="row mt-5 pt-3">
 					<div class="col-md-12 d-flex mb-5">
 						<div class="cart-detail cart-total p-3 p-md-4">
 							<h3 class="billing-heading mb-4">Cart Total</h3>
 							<p class="d-flex">
 								<span>Subtotal</span>
-                                <span>Rp. 00</span>
-                                <input type="hidden" name="subtotal" value="00">
+                                <span>Rp. <?= number_format($transaksi['subtotal'],2); ?></span>
 							</p>
 							<p class="d-flex">
 								<span>Biaya Kirim</span>
-                                <span>Rp. 00</span>
-                                <input type="hidden" name="ongkir" value="00">
+                                <span>Rp. <?= number_format($transaksi['ongkir'],2); ?></span>
 							</p>
 							<p class="d-flex">
 								<span>Diskon</span>
-                                <span>Rp. 00</span>
-                                <input type="hidden" name="diskon" value="00">
+                                <span>Rp. <?= number_format($transaksi['diskon'],2); ?></span>
 							</p>
 							<hr>
 							<p class="d-flex total-price">
 								<span>Total</span>
-                                <span>Rp.  00</span>
-                                <input type="hidden" name="total" value="00">
+                                <span>Rp.  <?= number_format($transaksi['total'],2); ?></span>
 							</p>
 						</div>
                     </div>
                     </form>
 				</div>
             </div> <!-- .col-md-8 -->
-            <div class="col-xl-5">
+            <div class="col-xl-4">
 				<div class="row mt-5 pt-3">
 					<div class="col-md-12 d-flex mb-5">
 						<div class="cart-detail cart-total p-3 p-md-4">
@@ -68,8 +64,39 @@
 							<hr>
 							<p class="d-flex total-price">
 								<span>Total</span>
-                                <span><b>Rp.  00</b></span>
+                                <span><b>Rp.  <?= number_format($transaksi['total'],2); ?></b></span>
 							</p>
+						</div>
+                    </div>
+                    </form>
+				</div>
+			</div> <!-- .col-md-8 -->
+			<div class="col-xl-3">
+				<div class="row mt-5 pt-3">
+					<div class="col-md-12 d-flex mb-5">
+						<div class="cart-detail cart-total p-3 p-md-4">
+							<h3 class="billing-heading mb-4">Status</h3>
+							<div class="alert alert-primary" role="alert">
+							<?php if($transaksi['status'] == 0 && $transaksi['foto'] != NULL ){ ?>
+								Menunggu Verifikasi
+							<?php } elseif($transaksi['status']==0){ ?> 
+								Menunggu Pembayaran
+							<?php } elseif($transaksi['status']==1){ ?> 
+								Terverifikasi
+							<?php } elseif($transaksi['status']==2){ ?> 
+								Sedang di proses
+							<?php } elseif($transaksi['status']==3){ ?> 
+								Dikirim
+							 <?php } ?>
+							</div>
+							<hr>
+							<h3 class="billing-heading mb-4">Bukti Pembayaran</h3>
+							<?php if($transaksi['foto'] == NULL ){ ?>
+								<img src="<?= base_url('assets/template/images/noimg.png'); ?>" alt="" style="width:200px;height:170px">
+							<?php }else{ ?>
+								<img src="<?= base_url('assets/template/images/'.$transaksi['foto']); ?>" alt="" style="width:200px;height:170px">
+							 <?php } ?>
+							<input type="file" class="mt-2">
 						</div>
                     </div>
                     </form>
@@ -81,18 +108,22 @@
 				<div class="row mt-5 pt-3">
 					<div class="col-md-12 d-flex mb-5">
 						<div class="cart-detail cart-total p-3 p-md-4">
-							<h2 class="billing-heading mb-4">Detail pesanan</h2>
-							<p class="d-flex">
-                                <span>Subtotal</span>
-                                <span>9</span>
-                                <span>Rp. 00</span>
-							</p>
+                            <h2 class="billing-heading mb-4">Detail pesanan</h2>
+                            <?php foreach($detail as $row){ ?>
+                                <p class="d-flex">
+                                    <span><?= $row->nama; ?></span>
+                                    <span><?= $row->jumlah; ?></span>
+                                    <span>Rp. <?= number_format($row->harga,2); ?></span>
+                                </p>
+                            <?php } ?>
+							
 						</div>
                     </div>
                     </form>
 				</div>
             </div> <!-- .col-md-8 -->
 		</div>
+		
 	</div>
 </section> <!-- .section -->
 

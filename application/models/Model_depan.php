@@ -20,6 +20,10 @@ class Model_depan extends CI_Model {
         DESC  LIMIT  1')->row_array();
     }
 
+    public function detail_pesanan($id){
+        return $this->db->select('a.*,b.nama,b.harga')->from('keranjang a')->join('menu b','a.id_menu=b.id')->where('a.id_transaksi',$id)->get()->result();
+    }
+
 }
 
 /* End of file Model_depan.php */

@@ -68,6 +68,8 @@ class Checkout extends CI_Controller {
 
     public function detail($id){
         $data['transaksi'] = $this->Crud->edit_data(['id'=>$id],'transaksi')->row_array();
+        $data['detail'] = $this->Model_depan->detail_pesanan($id);
+        // var_dump($data['detail']);die();
         $this->load->view('v_header');
         $this->load->view('v_detail', $data);
         $this->load->view('v_footer');

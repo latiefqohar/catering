@@ -11,7 +11,7 @@
 
     <section class="ftco-section">
     	<div class="container"> 
-    		<div class="row justify-content-center">
+    		<!-- <div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
     					<li><a href="#" class="active">All</a></li>
@@ -21,7 +21,7 @@
     					<li><a href="#">Dried</a></li>
     				</ul>
     			</div>
-    		</div>
+    		</div> -->
     		<div class="row">
                 <?php foreach($menu as $row){?> 
     			<div class="col-md-6 col-lg-3 ftco-animate">
@@ -53,7 +53,7 @@
                 </div>
                 <?php } ?>
     		</div>
-    		<div class="row mt-5">
+    		<!-- <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
@@ -67,7 +67,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
     	</div>
     </section>
 
