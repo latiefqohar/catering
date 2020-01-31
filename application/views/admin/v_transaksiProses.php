@@ -81,7 +81,7 @@
                                     <th>Jenis Pembayaran</th>
                                     <th>Tanggal Pemesanan</th>
                                     <th>Update</th>
-                                    <th>Status Pembayaran/th>
+                                    <th>Status Pembayaran</th>
                                     <th>Status Pesanan</th>
                                     <th>Action</th>
                                 </tr>
