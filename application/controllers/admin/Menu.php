@@ -5,6 +5,13 @@ class Menu extends CI_Controller {
 
     public function index()
     {
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['menu'] = $this->Crud->get_data('menu')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_menu',$data);
