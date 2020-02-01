@@ -12,6 +12,13 @@ class Transaksi extends CI_Controller {
 
     public function index()
     {
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['transaksi'] = $this->Crud->get_data('transaksi')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_transaksi',$data);
@@ -27,6 +34,13 @@ class Transaksi extends CI_Controller {
     }
 
     public function verifikasiPerorang(){
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['transaksi'] = $this->Crud->edit_data(['pembayaran'=>'transfer','foto !='=>"",'status'=>0],'transaksi')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_transaksiVerifikasi',$data);
@@ -34,6 +48,13 @@ class Transaksi extends CI_Controller {
     }
 
     public function verifikasiPerusahaan(){
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['transaksi'] = $this->Crud->edit_data(['pembayaran!='=>'transfer','status'=>0],'transaksi')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_transaksiVerifikasi',$data);
@@ -41,6 +62,7 @@ class Transaksi extends CI_Controller {
     }
 
     public function aksi_verifikasi($id){
+        
         $data = $this->Crud->edit_data(['id'=>$id],'transaksi')->row_array();
         if ($data['pembayaran']=="transfer") {
             $this->Crud->update_data(['id'=>$id],['status'=>1,'status_bayar'=>1,'update'=>date('Y-m-d H:i:s')],'transaksi');
@@ -60,6 +82,13 @@ class Transaksi extends CI_Controller {
     }
 
     public function proses(){
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['transaksi'] = $this->Crud->edit_data(['status'=>1],'transaksi')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_transaksiProses',$data);
@@ -76,6 +105,13 @@ class Transaksi extends CI_Controller {
     }
 
     public function kirim(){
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['transaksi'] = $this->Crud->edit_data(['status'=>2],'transaksi')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_transaksiKirim',$data);
@@ -92,6 +128,13 @@ class Transaksi extends CI_Controller {
     }
 
     public function selesai(){
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['transaksi'] = $this->Crud->edit_data(['status'=>3],'transaksi')->result();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_transaksiSelesai',$data);

@@ -69,6 +69,12 @@ class Checkout extends CI_Controller {
     public function detail($id){
         $data['transaksi'] = $this->Crud->edit_data(['id'=>$id],'transaksi')->row_array();
         $data['detail'] = $this->Model_depan->detail_pesanan($id);
+        if ($data['transaksi']['pembayaran']!="transfer") {
+            $query = $this->Crud->edit_data(['id'=>$data['transaksi']['id_invoice']],'invoice')->row_array();
+            $data['invoice']=$query['no_invoice'];
+        }else{
+            $data['invoice']=null;
+        }
         // var_dump($data['detail']);die();
         $this->load->view('v_header');
         $this->load->view('v_detail', $data);

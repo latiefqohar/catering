@@ -91,12 +91,27 @@
 							</div>
 							<hr>
 							<h3 class="billing-heading mb-4">Bukti Pembayaran</h3>
-							<?php if($transaksi['foto'] == NULL ){ ?>
-								<img src="<?= base_url('assets/template/images/noimg.png'); ?>" alt="" style="width:200px;height:170px">
-							<?php }else{ ?>
-								<img src="<?= base_url('assets/template/images/'.$transaksi['foto']); ?>" alt="" style="width:200px;height:170px">
-							 <?php } ?>
-							<input type="file" class="mt-2">
+							<?php
+								if ($transaksi['pembayaran']=="transfer") {
+									if($transaksi['foto'] == NULL ){ ?>
+										<img src="<?= base_url('assets/template/images/noimg.png'); ?>" alt="" style="width:200px;height:170px">
+									<?php }else{ ?>
+										<img src="<?= base_url('uploads/'.$transaksi['foto']); ?>" alt="" style="width:200px;height:170px">
+								<?php } 
+								if ($transaksi['foto'] == NULL) { ?>
+								<form action="<?= base_url('Status/uploadBukti'); ?>"  method="post" enctype="multipart/form-data">
+									<input type="file" class="mt-2 " name="foto">
+									<input type="hidden" value="<?= $transaksi['id']; ?>" name="id">
+									<button type="submit"  class="btn btn-primary mt-2">Upload</button>
+								</form>
+								<?php } 
+							}else{
+								echo $invoice;
+							} ?>
+							 
+								
+							
+							 
 						</div>
                     </div>
                     </form>

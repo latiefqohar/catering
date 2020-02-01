@@ -14,6 +14,13 @@ class Invoice extends CI_Controller {
 
     public function index()
     {
+        if ($this->session->userdata('login')!=1) {
+            $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fas fa-info"></i> Anda Belom Login
+            </div>');
+            redirect('Auth','refresh');
+        }
         $data['invoice'] = $this->Model_admin->invoice();
         $this->load->view('admin/v_header');
         $this->load->view('admin/v_invoice', $data);
@@ -73,6 +80,16 @@ class Invoice extends CI_Controller {
         $data['invoice'] = $this->Model_admin->detail_invoice($id);
         $data['transaksi'] = $this->Crud->edit_data(['id_invoice'=>$id],'transaksi')->result();
         $this->load->view('admin/v_printInvoice',$data);
+    }
+
+    public function konfirmasi($id){
+        $this->Crud->update_data(['id'=>$id],['status_invoice'=>1,'bayar_invoice'=>date('Y-m-d H:i:s')],'invoice');
+        $this->Crud->update_data(['id_invoice'=>$id],['status_bayar'=>1,'update'=>date('Y-m-d H:i:s')],'transaksi');
+        $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <i class="icon fas fa-info"></i> Info! Invoice berhasil dikonfirmasi.
+        </div>');
+        redirect('admin/Invoice','refresh');
     }
 
 }

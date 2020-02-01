@@ -43,6 +43,33 @@ class Status extends CI_Controller {
         }
         
     }
+
+    public function uploadBukti(){
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']  = '1024';
+        $config['overwrite'] = true;
+
+        $this->load->library('upload', $config);
+
+            if(!empty($_FILES['foto']['name'])){
+                echo "cek1";
+                if(!$this->upload->do_upload('foto')){
+                   echo $this->upload->display_errors();  
+                   echo 'gagal';
+                }else{
+                    $data_upload =  $this->upload->data();
+                    $foto['foto'] = $data_upload['file_name'];            
+                    $this->Crud->update_data(['id'=>$this->input->post('id')],['foto'=>$foto['foto']],'transaksi');
+                    $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <i class="icon fas fa-info"></i> Bukti berhasil di upload
+                    </div>');
+                    redirect('Checkout  /detail/'.$this->input->post('id'),'refresh');
+                }
+            }
+    }
     
 
 }
