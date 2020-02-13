@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-	<title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+	<title>Catering Mama Dina</title>
+	<link rel="icon" type="image/png" href="<?= base_url('assets/catering.png'); ?>">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -40,15 +41,15 @@
 						<div class="col-md pr-4 d-flex topper align-items-center">
 							<div class="icon mr-2 d-flex justify-content-center align-items-center"><span
 									class="icon-phone2"></span></div>
-							<span class="text">+ 1235 2355 98</span>
+							<span class="text">021-5444556</span>
 						</div>
 						<div class="col-md pr-4 d-flex topper align-items-center">
 							<div class="icon mr-2 d-flex justify-content-center align-items-center"><span
 									class="icon-paper-plane"></span></div>
-							<span class="text">youremail@email.com</span>
+							<span class="text">customer@cateringmamadina.com</span>
 						</div>
 						<div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-							<span class="text">3-5 Business days delivery &amp; Free Returns</span>
+							<span class="text">Pesanan Cepat &amp; Harga murah</span>
 						</div>
 					</div>
 				</div>
@@ -70,9 +71,10 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="<?= base_url('Home'); ?>" class="nav-link">Beranda</a></li>
-					<li class="nav-item"><a href="<?= base_url('Belanja'); ?>" class="nav-link">Pesan</a></li>
-					<li class="nav-item"><a href="<?= base_url('Status'); ?>" class="nav-link">Cek Status</a></li>
+					<li class="nav-item"><a href="<?= base_url('Belanja'); ?>" class="nav-link">Menu</a></li>
+					<li class="nav-item"><a href="<?= base_url('Status'); ?>" class="nav-link">Cek Status &amp; konfirmasi</a></li>
 					<li class="nav-item active"><a href="<?= base_url('About'); ?>" class="nav-link">Tentang</a></li>
+					<li class="nav-item active"><a href="<?= base_url('Auth'); ?>" class="nav-link">Login</a></li>
 					<!-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Shop</a>

@@ -27,7 +27,7 @@
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="<?= base_url('uploads/').$row->foto; ?>" alt="Colorlib Template" style="height:200px">
-    						<span class="status">30%</span>
+    						<!-- <span class="status">30%</span> -->
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
@@ -43,7 +43,7 @@
 	    							<a href="<?= base_url('Belanja/tambah_keranjang/'.$row->id); ?>" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	    								<span><i class="ion-ios-cart"></i></span>
 	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    							<a href="<?= base_url('Belanja/bungkus/'.$row->id); ?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
 	    								<span><i class="ion-ios-menu"></i></span>
 	    							</a>
     							</div>

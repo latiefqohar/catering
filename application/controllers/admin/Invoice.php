@@ -60,6 +60,7 @@ class Invoice extends CI_Controller {
             $this->Model_admin->update_invoice($id_invoice,$periode,$perusahaan);
             $datajumlah=$this->Model_admin->jumlah_invoice($id_invoice);
             $total_invoice=$datajumlah['jumlah'];
+            $this->send_mail($id_invoice);
             $tes=$this->Crud->update_data(['id'=>$id_invoice],['jumlah'=>$total_invoice],'invoice');
             $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -91,6 +92,35 @@ class Invoice extends CI_Controller {
         </div>');
         redirect('admin/Invoice','refresh');
     }
+
+    public function send_mail($id_invoice) { 
+        $query =  $this->db->query('select a.*, b.nama_perusahaan, b.email from invoice a join perusahaan b on a.id_perusahaan=b.id  where a.id="'.$id_invoice.'"')->row_array();
+        $from_email = "noreplyakunku@gmail.com"; 
+    
+        $config = Array(
+               'protocol' => 'smtp',
+               'smtp_host' => 'ssl://smtp.googlemail.com',
+               'smtp_port' => 465,
+               'smtp_user' => $from_email,
+               'smtp_pass' => 'noreplyakunku12',
+               'mailtype'  => 'html', 
+               'charset'   => 'iso-8859-1'
+       );
+    
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");   
+        $this->email->from($from_email, 'Invoice Catering'); 
+        $this->email->to($query["email"]);
+        $this->email->subject('Invoice Periode : '.$query['periode']); 
+        $this->email->message('Terimakasih telah memesan catering kami, Tagihan anda pada periode : '.$query["periode"].' sebesar Rp. '.number_format($query["jumlah"],2,",",".").'  dengan nomor invoice '.$query["no_invoice"].', untuk detail silahkan klik <a href="'.base_url().'admin/Invoice/detail/'.$query["id"].'"> disini </a>'); 
+    
+        //Send mail 
+        if($this->email->send()){
+              
+        }else {
+            echo 'gagal';
+        } 
+     }
 
 }
 

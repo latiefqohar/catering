@@ -7,6 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>Catering</title>
+	<link rel="icon" type="image/png" href="<?= base_url('assets/catering.png'); ?>">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/admin/plugins/fontawesome-free/css/all.min.css">
@@ -127,7 +128,6 @@
                 <a href="<?= base_url('admin/Transaksi'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Transaksi</p>
-                  <span class="badge badge-info right">6</span>
                 </a>
               </li>
               <li class="nav-item">

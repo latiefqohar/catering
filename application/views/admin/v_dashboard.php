@@ -2,6 +2,7 @@
 	<h2>Welcome To</h2>
 	<h4>Catering Mama Dina</h4>
 </center>
+<img src="<?= base_url('assets/catering.png'); ?>" alt="Logo"  style="display: block;margin-left: auto;margin-right: auto;width: 100px; ">
 <br><br>
 <div class="row">
 	<div class="col-12 col-sm-6 col-md-3">

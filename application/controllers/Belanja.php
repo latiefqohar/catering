@@ -29,6 +29,16 @@ class Belanja extends CI_Controller {
         redirect('Belanja','refresh');
     }
 
+    public function bungkus($id){
+        $cek_keranjang = $this->Crud->edit_data(array('id_menu'=>$id, 'status_bayar'=>0),'keranjang')->num_rows();
+        if ($cek_keranjang > 0) {
+            $this->Model_depan->update_keranjang($id);
+        }else{
+            $this->Crud->insert_data(array('id_menu'=>$id),'keranjang');
+        }
+        redirect('Keranjang','refresh');
+    }
+
 }
 
 /* End of file Belanja.php */

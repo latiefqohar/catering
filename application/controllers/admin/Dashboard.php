@@ -11,7 +11,6 @@ class Dashboard extends CI_Controller {
             <i class="icon fas fa-info"></i> Anda Belom Login
             </div>');
             redirect('Auth','refresh');
-            
         }
         $data['pesanan_baru']=$this->Crud->edit_data(['status'=>0],'transaksi')->num_rows();
         $data['menunggu_proses']=$this->Crud->edit_data(['status'=>1],'transaksi')->num_rows();
