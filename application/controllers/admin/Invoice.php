@@ -39,24 +39,28 @@ class Invoice extends CI_Controller {
         $tahun = $this->input->post('tahun');
         $periode = $bulan."-".$tahun;
         $perusahaan = $this->input->post('perusahaan');
-        $cek=$this->db->query("select *  from transaksi where  DATE_FORMAT(waktu,'%m-%Y')='".$periode."' and id_invoice is NULL and id_perusahaan='".$perusahaan."'")->num_rows();
-        if ($cek< 1) {
+        $cek=$this->db->query("select *,sum(total) as tagihan from transaksi where  DATE_FORMAT(waktu,'%m-%Y')='".$periode."' and id_invoice is NULL and id_perusahaan='".$perusahaan."'");
+        if ($cek->num_rows() < 1) {
             $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <i class="icon fas fa-info"></i> GAGAL! Invoice sudah dibuat.
             </div>');
             redirect('admin/Invoice/add','refresh');
         }else{
+            $data_tagihan=$cek->row_array();
+            $tagihan = $data_tagihan['tagihan'];
             $invoice = "INV/".date('ymdHi')."/".date('Y');
             $dataInv = array(
                 'no_invoice' => $invoice,
                 'id_perusahaan' => $perusahaan,
                 'periode' => $bulan."-".$tahun,
-                'tanggal_invoice' => date('Y-m-d H:i:s')
+                'tanggal_invoice' => date('Y-m-d H:i:s'),
+                'jumlah' => $tagihan
             );
             $this->Crud->insert_data($dataInv,'invoice');
             $invoice_terakhir = $this->Model_admin->invoice_terakhir($perusahaan);
             $id_invoice = $invoice_terakhir['id'];
+            // var_dump($id_invoice);die();
             $this->Model_admin->update_invoice($id_invoice,$periode,$perusahaan);
             $datajumlah=$this->Model_admin->jumlah_invoice($id_invoice);
             $total_invoice=$datajumlah['jumlah'];

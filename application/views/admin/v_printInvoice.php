@@ -73,6 +73,7 @@
                     <tbody>
                     <?php
                     $no=1;
+                    $total_keseluruhan=0;
                     foreach($transaksi as $row){ ?>
                         <tr>
                             <td><?= $no++; ?></td>
@@ -80,7 +81,9 @@
                             <td><?= $row->waktu; ?></td>
                             <td>Rp. <?= number_format($row->total,2,",","."); ?></td>
                         </tr>
-                    <?php } ?>
+                    <?php 
+                     $total_keseluruhan+=$row->total;
+                    } ?>
                     </tbody>
                   </table>
                 </div>
@@ -109,7 +112,7 @@
                     <table class="table">
                       <tr>
                         <th>Total:</th>
-                        <td>$265.24</td>
+                        <td>Rp. <?= number_format($row->total,2,",","."); ?></td>
                       </tr>
                     </table>
                   </div>

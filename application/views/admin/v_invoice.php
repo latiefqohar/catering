@@ -43,7 +43,10 @@
                                     <td><?= $row->bayar_invoice; ?></td>
                                     <td>
                                         <a href="<?= base_url('admin/Invoice/detail/'.$row->id); ?>" class="btn btn-info">Detail</a>
-                                        <a href="<?= base_url('admin/Invoice/konfirmasi/'.$row->id); ?>" class="btn btn-success" onclick="return confirm('apakah anda yakin akan konfirmasi pembayaran?')">Konfirmasi</a>
+                                        <?php  if ($row->status_invoice==0) { ?>
+                                            <a href="<?= base_url('admin/Invoice/konfirmasi/'.$row->id); ?>" class="btn btn-success" onclick="return confirm('apakah anda yakin akan konfirmasi pembayaran?')">Konfirmasi</a>
+                                        <?php } ?>
+                                        
                                     </td>
                                 </tr>
                                 <?php } ?>

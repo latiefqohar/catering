@@ -12,7 +12,7 @@ class Model_depan extends CI_Model {
     }
 
     public function subtotal(){
-        return $this->db->select("sum(a.harga) as jumlah")->from('menu a')->join('keranjang b','a.id=b.id_menu')->where('b.status_bayar',0)->get()->row_array();
+        return $this->db->select("sum(a.harga*b.jumlah) as jumlah")->from('menu a')->join('keranjang b','a.id=b.id_menu')->where('b.status_bayar',0)->get()->row_array();
     }
 
     public function transaksi_terakhir($telpon){

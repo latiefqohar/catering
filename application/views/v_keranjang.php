@@ -54,7 +54,7 @@
 										<div class="input-group mb-3">
 											<input type="number" name="quantity" id="qty_<?= $row->id ?>"
 												class="quantity form-control input-number" value="<?= $row->jumlah; ?>"
-												min="1" max="100" onchange="hitung_harga(<?= $row->id ?>)">
+												min="1" max="100" onkeyup="hitung_harga(<?= $row->id ?>)" onchange="hitung_harga(<?= $row->id ?>)">
 											<input type="hidden" value="<?= $row->harga; ?>" id="harga_<?= $row->id ?>">
 										</div>
 									</td>

@@ -66,7 +66,7 @@ class Status extends CI_Controller {
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <i class="icon fas fa-info"></i> Bukti berhasil di upload
                     </div>');
-                    redirect('Checkout  /detail/'.$this->input->post('id'),'refresh');
+                    redirect('Checkout/detail/'.$this->input->post('id'),'refresh');
                 }
             }
     }
